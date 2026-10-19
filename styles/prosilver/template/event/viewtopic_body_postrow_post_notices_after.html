@@ -1,0 +1,28 @@
+<div id="post-reactions-{{ postrow.POST_ID }}" class="post-reaction-container" data-ajax-url="{{ postrow.U_REACTION_AJAX }}" data-hash="{{ postrow.REACTION_HASH }}" data-error-message="{{ lang('REACTION_UPDATE_ERROR') }}" data-invalid-message="{{ lang('REACTION_REQUEST_INVALID') }}">
+{% if postrow.POST_REACTIONS or postrow.POST_REACTION_OPTIONS %}
+	<div class="post-reactions">
+		{% for reaction in postrow.POST_REACTIONS %}
+			{% if reaction.URL %}
+				<a class="post-reaction{% if reaction.SELECTED %} is-selected{% endif %}" href="{{ reaction.URL }}" data-reaction-key="{{ reaction.KEY }}" title="{{ reaction.EMOJI }}" aria-label="{{ reaction.EMOJI }}">
+					<span class="post-reaction-emoji">{{ reaction.EMOJI }}</span>{% if reaction.COUNT > 1 %}<span class="post-reaction-count">{{ reaction.COUNT }}</span>{% endif %}
+				</a>
+			{% else %}
+				<span class="post-reaction{% if reaction.SELECTED %} is-selected{% endif %}" title="{{ reaction.EMOJI }}" aria-label="{{ reaction.EMOJI }}">
+					<span class="post-reaction-emoji">{{ reaction.EMOJI }}</span>{% if reaction.COUNT > 1 %}<span class="post-reaction-count">{{ reaction.COUNT }}</span>{% endif %}
+				</span>
+			{% endif %}
+		{% endfor %}
+		{% if postrow.POST_REACTION_OPTIONS %}
+			<details class="reaction-picker">
+				<summary class="button reaction-add" title="{{ lang('ADD_REACTION') }}" aria-label="{{ lang('ADD_REACTION') }}"><span class="icon post-reaction-add">+</span></summary>
+				<div class="reaction-picker-menu">
+					{% for reaction in postrow.POST_REACTION_OPTIONS %}
+						<a class="reaction-picker-option{% if reaction.SELECTED %} is-selected{% endif %}" href="{{ reaction.URL }}" data-reaction-key="{{ reaction.KEY }}" title="{{ reaction.EMOJI }}" aria-label="{{ reaction.EMOJI }}">{{ reaction.EMOJI }}</a>
+					{% endfor %}
+				</div>
+			</details>
+		{% endif %}
+		<span class="sr-only reaction-status" aria-live="polite"></span>
+	</div>
+{% endif %}
+</div>

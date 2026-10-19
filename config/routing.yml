@@ -1,0 +1,5 @@
+lenu_postreactions_reaction_controller:
+    path: /reaction/{post_id}
+    defaults: { _controller: lenu.postreactions.controller.reaction:main }
+    requirements:
+        post_id: \d+

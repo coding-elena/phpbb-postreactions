@@ -1,0 +1,2 @@
+parameters:
+    tables.reactions: '%core.table_prefix%reactions'

@@ -1,0 +1,33 @@
+{% include 'overall_header.html' %}
+
+<h1>{{ L_TITLE }}</h1>
+<p>{{ L_TITLE_EXPLAIN }}</p>
+
+{% if S_ERROR %}
+	<div class="errorbox"><p>{{ ERROR_MSG }}</p></div>
+{% endif %}
+
+<form id="acp_postreactions" method="post" action="{{ U_ACTION }}">
+	<fieldset>
+		{% for option in loops.options %}
+			{% if option.S_LEGEND %}
+				<legend>{{ option.LEGEND }}</legend>
+			{% else %}
+				<dl>
+					<dt>
+						<label>{{ option.TITLE }}</label>
+						{% if option.S_EXPLAIN %}<br><span>{{ option.TITLE_EXPLAIN }}</span>{% endif %}
+					</dt>
+					<dd>{{ option.CONTENT }}</dd>
+				</dl>
+			{% endif %}
+		{% endfor %}
+	</fieldset>
+
+	<fieldset class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}">
+		{{ S_FORM_TOKEN }}
+	</fieldset>
+</form>
+
+{% include 'overall_footer.html' %}

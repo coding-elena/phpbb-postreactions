@@ -1,0 +1,125 @@
+.post-reactions
+{
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+.post-reaction
+{
+	align-items: center;
+	border: 1px solid #d4d8de;
+	border-radius: 16px;
+	display: inline-flex;
+	gap: 4px;
+	min-height: 28px;
+	padding: 2px 5px;
+	font-size: 1rem;
+	text-decoration: none;
+	transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+
+.post-reaction:hover,
+.post-reaction.is-selected
+{
+	border-color: #79afe1;
+	transform: translateY(-1px);
+}
+
+.post-reaction-count
+{
+	font-size: 0.9em;
+	font-weight: 600;
+}
+
+.reaction-picker
+{
+	position: relative;
+}
+
+.reaction-add
+{
+	align-items: center;
+	border-radius: 50%;
+	cursor: pointer;
+	display: inline-flex;
+	font-size: 20px;
+	font-weight: 400;
+	height: 30px;
+	justify-content: center;
+	line-height: 1;
+	list-style: none;
+	width: 30px;
+	padding: 0;
+}
+
+.reaction-add::-webkit-details-marker
+{
+	display: none;
+}
+
+.icon.post-reaction-add {
+	margin-top: -2px;
+	font-size: 20px;
+}
+
+.reaction-picker[open] .reaction-add,
+.reaction-add:hover, .post-reaction.is-selected:hover
+{
+	background: #e5f2ff;
+	border-color: #79afe1;
+	color: #1769aa;
+}
+
+.reaction-picker-menu
+{
+	background: #fff;
+	border: 1px solid #d4d8de;
+	border-radius: 24px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+	display: flex;
+	gap: 4px;
+	left: 0;
+	padding: 6px;
+	position: absolute;
+	top: auto;
+	bottom: calc(100% + 8px);
+	z-index: 10;
+}
+
+.reaction-picker-option
+{
+	align-items: center;
+	border-radius: 50%;
+	display: inline-flex;
+	font-size: 22px;
+	height: 36px;
+	justify-content: center;
+	text-decoration: none;
+	transition: background-color 120ms ease, transform 120ms ease;
+	width: 36px;
+}
+
+a.reaction-picker-option:hover, a.post-reaction:hover {
+	text-decoration: none;
+}
+
+.reaction-picker-option:hover,
+.reaction-picker-option.is-selected
+{
+	background: #e5f2ff;
+	transform: scale(1.15);	
+}
+
+.post-reaction-container.is-loading .post-reactions
+{
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+
+.post-reaction-container {
+	clear: left;
+	padding-top: 1rem;
+}

@@ -1,0 +1,42 @@
+imports:
+    - { resource: tables.yml }
+
+services:
+    lenu.postreactions.listener:
+        class: lenu\postreactions\event\listener
+        arguments:
+            - '@template'
+            - '@user'
+            - '@request'
+            - '@controller.helper'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+            - '@lenu.postreactions.helper'
+        tags:
+            - { name: event.listener }
+    lenu.postreactions.helper:
+        class: lenu\postreactions\core\helper
+        arguments:
+            - '@config'
+            - '@dbal.conn'
+            - '@auth'
+            - '@user'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+            - '%tables.reactions%'
+            - '%tables.posts%'
+            - '@notification_manager'
+    lenu.postreactions.controller.reaction:
+        class: lenu\postreactions\controller\reaction
+        arguments:
+            - '@request'
+            - '@user'
+            - '@lenu.postreactions.helper'
+    lenu.postreactions.notification.type.reaction:
+        class: lenu\postreactions\notification\reaction
+        shared: false
+        parent: notification.type.base
+        calls:
+            - [set_user_loader, ['@user_loader']]
+        tags:
+            - { name: notification.type }
