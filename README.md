@@ -35,7 +35,7 @@ An extension for phpBB that enables modern emoji post reactions (👍, ❤️, �
 
 ## 📋 Requirements
 
-* **phpBB**: `>= 3.3.0`
+* **phpBB**: `>= 3.3.0` (may works on `3.2.0`)
 * **PHP**: `>= 8.0.0`
 
 ---
@@ -52,6 +52,20 @@ phpBB/ext/lenu/postreactions/
 2. **Navigate** to your **Admin Control Panel (ACP)**.
 3. Go to **Customise** > **Extension Management** > **Disabled Extensions**.
 4. Find **Post Reactions** in the list and click **Enable**.
+
+---
+
+## 🔄 Upgrade Instructions
+
+1. Go to **ACP** > **Customise** > **Extension Management** > **Enabled Extensions**.
+2. Locate **Post Reactions** and click **Disable** *(do **not** click "Delete data")*.
+3. Upload and overwrite the existing extension files in:
+   ```text
+   phpBB/ext/lenu/postreactions/
+   ```
+4. Return to **ACP** > **Customise** > **Extension Management** > **Disabled Extensions**.
+5. Click **Enable** to finish the upgrade process and run any necessary database migrations automatically.
+6. Purge the cache via **ACP** > **General** > **Purge the cache**.
 
 ---
 
@@ -78,7 +92,7 @@ Go to **ACP** > **Permissions** > **Forum permissions** (or **Forum roles**):
 * Select the desired forum(s) and group(s).
 
 
-* Under the permissions list, locate **Can react to posts** (`f_lenu_postreactions_react` / `Can react to posts`) and set to **Yes**, **No**, or **Never**.
+* Under the permissions list, locate **Can react to posts** and set to **Yes**, **No**, or **Never**.
 
 
 
@@ -95,6 +109,6 @@ Go to **ACP** > **Permissions** > **Forum permissions** (or **Forum roles**):
 
 ## 📄 License
 
-[GPLv2](https://www.google.com/search?q=LICENSE) © Lenuchan
+**GPLv2** © Lenuchan
 
 ---
