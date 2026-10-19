@@ -35,7 +35,7 @@ An extension for phpBB that enables modern emoji post reactions (👍, ❤️, �
 
 ## 📋 Requirements
 
-* **phpBB**: `>= 3.3.0` (may works on `3.2.0`)
+* **phpBB**: `>= 3.2.0` (preferred on `3.3.0`)
 * **PHP**: `>= 8.0.0`
 
 ---
