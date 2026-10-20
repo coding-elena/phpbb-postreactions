@@ -35,7 +35,7 @@ An extension for phpBB that enables modern emoji post reactions (👍, ❤️, �
 
 ## 📋 Requirements
 
-* **phpBB**: `>= 3.2.0` (preferred on `3.3.0`)
+* **phpBB**: `>= 3.2.0` (fully compatible with phpBB `3.3.x`)
 * **PHP**: `>= 8.0.0`
 
 ---
@@ -63,6 +63,7 @@ phpBB/ext/lenu/postreactions/
    ```text
    phpBB/ext/lenu/postreactions/
    ```
+   
 4. Return to **ACP** > **Customise** > **Extension Management** > **Disabled Extensions**.
 5. Click **Enable** to finish the upgrade process and run any necessary database migrations automatically.
 6. Purge the cache via **ACP** > **General** > **Purge the cache**.

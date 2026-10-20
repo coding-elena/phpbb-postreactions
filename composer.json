@@ -2,7 +2,7 @@
     "name": "lenu/postreactions",
     "type": "phpbb-extension",
     "description": "Lets users quickly react to posts with custom emoji reactions.",
-    "homepage": "http://onlyvidecoding.it",
+    "homepage": "https://github.com/coding-elena/phpbb-postreactions",
     "version": "1.0.3",
     "license": "GPL-2.0",
     "authors": [
