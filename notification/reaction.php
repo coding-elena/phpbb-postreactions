@@ -84,6 +84,16 @@ class reaction extends \phpbb\notification\type\base
 		);
 	}
 
+	public function get_email_template()
+	{
+		return false;
+	}
+
+	public function get_email_template_variables()
+	{
+		return array();
+	}
+
 	public function create_insert_array($reaction_data, $pre_create_data = array())
 	{
 		$this->set_data('actor_id', $reaction_data['actor_id']);
