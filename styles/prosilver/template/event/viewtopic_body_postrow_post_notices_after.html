@@ -3,11 +3,11 @@
 	<div class="post-reactions">
 		{% for reaction in postrow.POST_REACTIONS %}
 			{% if reaction.URL %}
-				<a class="post-reaction{% if reaction.SELECTED %} is-selected{% endif %}" href="{{ reaction.URL }}" data-reaction-key="{{ reaction.KEY }}" title="{{ reaction.EMOJI }}" aria-label="{{ reaction.EMOJI }}">
+				<a class="post-reaction{% if reaction.SELECTED %} is-selected{% endif %}" href="{{ reaction.URL }}" data-reaction-key="{{ reaction.KEY }}" title="{{ reaction.USERNAMES }}" aria-label="{{ reaction.EMOJI }}">
 					<span class="post-reaction-emoji">{{ reaction.EMOJI }}</span>{% if reaction.COUNT > 1 %}<span class="post-reaction-count">{{ reaction.COUNT }}</span>{% endif %}
 				</a>
 			{% else %}
-				<span class="post-reaction{% if reaction.SELECTED %} is-selected{% endif %}" title="{{ reaction.EMOJI }}" aria-label="{{ reaction.EMOJI }}">
+				<span class="post-reaction{% if reaction.SELECTED %} is-selected{% endif %}" title="{{ reaction.USERNAMES }}" aria-label="{{ reaction.EMOJI }}">
 					<span class="post-reaction-emoji">{{ reaction.EMOJI }}</span>{% if reaction.COUNT > 1 %}<span class="post-reaction-count">{{ reaction.COUNT }}</span>{% endif %}
 				</span>
 			{% endif %}

@@ -30,6 +30,7 @@ class helper
 		'wow' => array('code' => ':O', 'emoji' => '😮'),
 		'sad' => array('code' => ':\'(', 'emoji' => '😢'),
 		'angry' => array('code' => '>:(', 'emoji' => '😡'),
+		'thankyou' => array('code' => '🙏', 'emoji' => '🙏'),
 	);
 
 	protected $topic_cache = array();
@@ -158,9 +159,11 @@ class helper
 			return;
 		}
 
-		$sql = 'SELECT post_id, user_id, reaction
-			FROM ' . $this->reactions_table . '
-			WHERE ' . $this->db->sql_in_set('post_id', $post_ids);
+		$sql = 'SELECT r.post_id, r.user_id, r.reaction, u.username
+			FROM ' . $this->reactions_table . ' r
+			LEFT JOIN ' . USERS_TABLE . ' u
+				ON u.user_id = r.user_id
+			WHERE ' . $this->db->sql_in_set('r.post_id', $post_ids);
 		$result = $this->db->sql_query($sql);
 		while ($row = $this->db->sql_fetchrow($result))
 		{
@@ -170,6 +173,7 @@ class helper
 			{
 				$this->post_reactions[$post_id] = array(
 					'counts' => array(),
+					'users' => array(),
 					'selected' => '',
 				);
 			}
@@ -179,8 +183,13 @@ class helper
 				if (!isset($this->post_reactions[$post_id]['counts'][$reaction_key]))
 				{
 					$this->post_reactions[$post_id]['counts'][$reaction_key] = 0;
+					$this->post_reactions[$post_id]['users'][$reaction_key] = array();
 				}
 				$this->post_reactions[$post_id]['counts'][$reaction_key]++;
+				if (isset($row['username']) && $row['username'] !== '')
+				{
+					$this->post_reactions[$post_id]['users'][$reaction_key][] = $row['username'];
+				}
 			}
 
 			if ($reaction_key !== false && (int) $row['user_id'] === (int) $user_id)
@@ -200,6 +209,7 @@ class helper
 
 		$post_reactions = isset($this->post_reactions[$post_id]) ? $this->post_reactions[$post_id] : array(
 			'counts' => array(),
+			'users' => array(),
 			'selected' => '',
 		);
 		$can_react = $this->can_react_to_post($user_id, $poster_id, $forum_id, $post_id);
@@ -217,6 +227,7 @@ class helper
 				'KEY'		=> $reaction_key,
 				'EMOJI'		=> $reaction['emoji'],
 				'COUNT'		=> $reaction_count,
+				'USERNAMES'	=> isset($post_reactions['users'][$reaction_key]) ? implode(', ', $post_reactions['users'][$reaction_key]) : '',
 				'SELECTED'	=> $post_reactions['selected'] === $reaction_key,
 				'URL'		=> $can_react ? $this->get_reaction_url($post_id, $forum_id, $reaction_key) : '',
 			);
@@ -263,6 +274,7 @@ class helper
 		$this->load_post_reactions(array((int) $post_id), $user_id);
 		$post_reactions = isset($this->post_reactions[$post_id]) ? $this->post_reactions[$post_id] : array(
 			'counts' => array(),
+			'users' => array(),
 			'selected' => '',
 		);
 		$reactions = array();
@@ -276,6 +288,7 @@ class helper
 					'key'		=> $reaction_key,
 					'emoji'		=> $reaction['emoji'],
 					'count'		=> $count,
+					'usernames'	=> isset($post_reactions['users'][$reaction_key]) ? implode(', ', $post_reactions['users'][$reaction_key]) : '',
 					'selected'	=> $post_reactions['selected'] === $reaction_key,
 				);
 			}

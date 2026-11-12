@@ -9,13 +9,13 @@
 .post-reaction
 {
 	align-items: center;
-	border: 1px solid #d4d8de;
+	border: none;
 	border-radius: 16px;
 	display: inline-flex;
 	gap: 4px;
 	min-height: 28px;
-	padding: 2px 5px;
-	font-size: 1rem;
+	padding: 1px 2px;
+	font-size: 1.6rem;
 	text-decoration: none;
 	transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease;
 }

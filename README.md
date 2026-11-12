@@ -1,12 +1,13 @@
 # phpBB Post Reactions Extension
 
-An extension for phpBB that enables modern emoji post reactions (👍, ❤️, 😂, 😮, 😢, 😡) on forum posts, fully integrated with ACP settings and phpBB's granular permission system.
+An extension for phpBB that enables modern emoji post reactions (👍, ❤️, 😂, 😮, 😢, 😡, 🙏 thank you) on forum posts, fully integrated with ACP settings and phpBB's granular permission system.
 
 ---
 
 ## 🌟 Features
 
 * **Interactive Emoji Bar**: Users can react to posts using interactive emojis.
+* **Reaction Tooltips**: Hover over a reaction to see the usernames of everyone who chose it.
 
 
 * **ACP Settings Panel** (`ACP -> Extensions -> Post Reactions`):

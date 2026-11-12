@@ -68,7 +68,7 @@
 			button.className = 'post-reaction' + (reaction.selected ? ' is-selected' : '');
 			button.href = option ? option.href : '#';
 			button.dataset.reactionKey = reaction.key;
-			button.title = reaction.emoji;
+			button.title = reaction.usernames || reaction.emoji;
 			button.setAttribute('aria-label', reaction.emoji);
 
 			var emoji = document.createElement('span');
