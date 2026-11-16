@@ -30,7 +30,7 @@ class helper
 		'wow' => array('code' => ':O', 'emoji' => '😮'),
 		'sad' => array('code' => ':\'(', 'emoji' => '😢'),
 		'angry' => array('code' => '>:(', 'emoji' => '😡'),
-		'thankyou' => array('code' => '🙏', 'emoji' => '🙏'),
+		'thankyou' => array('code' => '_/\_', 'emoji' => '🙏'),
 	);
 
 	protected $topic_cache = array();
